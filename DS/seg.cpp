@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define int long long 
 
-const int MXN = 10;
+const int MXN = 1e5+10;
 int vet[MXN];
 int tree[4*MXN];
 int n;
@@ -40,20 +41,17 @@ int query(int ql, int qr, int node=0, int l=0,int r=n-1)
     return query(ql,qr,2*node+1,l,m) + query(ql,qr,2*node+2, m+1,r); 
 }
 
-int main()
+void test_tree()
 {
-    n=6;
-    vet[0] = 1;
-    vet[1] = 2;
-    vet[2] = 4;
-    vet[3] = 3;
-    vet[4] = 5;
-    vet[5] = 10;
+    for(int  i =0;i<4*n;i++) cout << tree[i]<<" ";
+    cout <<"\n";
+}
+
+
+signed main()
+{
+    cin>>n; int q;cin>>q;
+    for(int i =0;i<n;i++) cin >> vet[i];
     build();
-    for(int i =0;i<15;i++) cout << tree[i]<<" ";
-    cout <<"\n";
-    update(3,7);
-    for(int i =0;i<15;i++) cout << tree[i]<<" ";
-    cout <<"\n";
-    cout << query(2,4)<<"\n";
+    
 }

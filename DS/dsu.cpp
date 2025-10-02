@@ -57,3 +57,4 @@ int kruskal(int n,vector<iii>  &edges)
     if(comp != n-1) return -1;
     return mst_cost;
 }
+
