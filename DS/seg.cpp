@@ -47,6 +47,16 @@ int query(int ql, int qr, int node=0, int l=0,int r=n-1)
     return join(query(ql,qr,2*node+1,l,m),query(ql,qr,2*node+2, m+1,r)); 
 }
 
+int find_kth_one(int k,int node =0,int l =0,int r = n-1)
+{   
+    if(k>tree[node]) return -1;
+    if(l==r) return l;
+    int m = (l+r)/2;
+    int esq = tree[2*node+1];
+    if(esq<k) return find_kth_one(k-esq, 2*node+2,m+1,r);
+    else return find_kth_one(k,2*node+1,l,m); 
+}
+
 void test_tree()
 {
     for(int  i =0;i<4*n;i++) cout << tree[i]<<" ";
